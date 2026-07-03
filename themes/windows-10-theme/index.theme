@@ -1,0 +1,31 @@
+[X-GNOME-Metatheme]
+Type=X-GNOME-Metatheme
+Name=Windows-10-Dark
+Name[en_US]=Windows-10-Dark
+Name[id]=Windows-10-Gelap
+Comment=Windows 10 Dark theme for XFCE
+Comment[en_US]=Windows 10 Dark theme for XFCE
+Comment[id]=Tema Windows 10 Gelap untuk XFCE
+Encoding=UTF-8
+
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Windows-10-Dark
+Comment=Windows 10 Dark Theme
+X-GNOME-Metatheme=Windows-10-Dark
+X-GNOME-MetathemeType=theme
+
+[X-GNOME-Metatheme/gtk-theme]
+Name=Windows-10-Dark
+
+[X-GNOME-Metatheme/icon-theme]
+Name=Windows-10
+
+[X-GNOME-Metatheme/xfwm-theme]
+Name=Windows-10-Dark
+
+[X-GNOME-Metatheme/cursor-theme]
+Name=Adwaita
+
+[X-GNOME-Metatheme/background]
+Name=/usr/share/backgrounds/xfce/xfce-blue-digital.jpg

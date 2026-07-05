@@ -1,0 +1,75 @@
+{
+  "id": "linux",
+  "name": "Traditional Linux Layout",
+  "description": "Classic Linux desktop with panel at top and window decorations",
+  "icon": "🐧",
+  "panel": {
+    "position": "top",
+    "height": 32,
+    "autohide": false,
+    "show_handles": true,
+    "elements": [
+      {
+        "type": "applications-menu",
+        "icon": "org.xfce.menu",
+        "tooltip": "Applications",
+        "label": "Menu"
+      },
+      {
+        "type": "launcher",
+        "items": ["file-manager", "terminal", "web-browser"]
+      },
+      {
+        "type": "window-menu",
+        "show_icons": true,
+        "show_titles": true
+      },
+      {
+        "type": "spacer"
+      },
+      {
+        "type": "system-tray",
+        "items": ["network", "volume", "battery"]
+      },
+      {
+        "type": "clock",
+        "format": "%R",
+        "show_date": false
+      },
+      {
+        "type": "actions",
+        "items": ["lock-screen", "logout", "shutdown"]
+      }
+    ]
+  },
+  "dock": {
+    "enabled": false
+  },
+  "menu": {
+    "type": "xfce-menu",
+    "position": "top-left",
+    "width": 300,
+    "items": [
+      {
+        "category": "applications",
+        "items": ["settings", "zorin-appearance"]
+      },
+      {
+        "category": "system",
+        "items": ["terminal", "file-manager"]
+      }
+    ]
+  },
+  "window-buttons": {
+    "minimize": true,
+    "maximize": true,
+    "close": true,
+    "position": "right",
+    "style": "traditional"
+  },
+  "folder-view": "desktop-icons",
+  "workspace-switcher": {
+    "enabled": true,
+    "num_workspaces": 4
+  }
+}

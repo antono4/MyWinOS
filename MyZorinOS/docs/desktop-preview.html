@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyZorinOS - Desktop Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Ubuntu, Cantarell, sans-serif;
+            background: #0a0a0a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .desktop-container {
+            width: 100%;
+            max-width: 1200px;
+            perspective: 1000px;
+        }
+        
+        .desktop {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.5);
+            position: relative;
+        }
+        
+        /* Top Bar (macOS style) */
+        .top-bar {
+            height: 28px;
+            background: rgba(30, 30, 30, 0.95);
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            -webkit-app-region: drag;
+            border-bottom: 1px solid #3a3a3a;
+        }
+        
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .apple-menu {
+            width: 14px;
+            height: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .menu-items {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+            color: #ccc;
+            -webkit-app-region: no-drag;
+        }
+        
+        .menu-item {
+            cursor: pointer;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        
+        .menu-item:hover {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+        
+        .top-bar-center {
+            flex: 1;
+            text-align: center;
+            font-size: 13px;
+            color: #fff;
+            font-weight: 500;
+        }
+        
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            -webkit-app-region: no-drag;
+        }
+        
+        .status-icon {
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        .clock {
+            font-size: 13px;
+            color: #fff;
+        }
+        
+        /* Main Content Area */
+        .main-content {
+            height: 550px;
+            display: flex;
+            position: relative;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%231a1a2e"/><stop offset="50%" style="stop-color:%2316213e"/><stop offset="100%" style="stop-color:%230f3460"/></linearGradient></defs><rect fill="url(%23g)" width="1920" height="1080"/><circle cx="300" cy="200" r="150" fill="rgba(124,77,255,0.1)"/><circle cx="1600" cy="800" r="200" fill="rgba(124,77,255,0.05)"/></svg>');
+            background-size: cover;
+        }
+        
+        /* Desktop Icons */
+        .desktop-icons {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .desktop-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80px;
+            padding: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .desktop-icon:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .desktop-icon.selected {
+            background: rgba(124,77,255,0.3);
+            border: 1px solid rgba(124,77,255,0.5);
+        }
+        
+        .icon-image {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin-bottom: 6px;
+        }
+        
+        .icon-label {
+            color: #fff;
+            font-size: 12px;
+            text-align: center;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+        }
+        
+        /* App Windows */
+        .window {
+            position: absolute;
+            background: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            overflow: hidden;
+            min-width: 400px;
+        }
+        
+        .window-header {
+            height: 36px;
+            background: #252525;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            border-bottom: 1px solid #3a3a3a;
+            -webkit-app-region: drag;
+        }
+        
+        .window-controls {
+            display: flex;
+            gap: 8px;
+            -webkit-app-region: no-drag;
+        }
+        
+        .window-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: filter 0.2s;
+        }
+        
+        .window-btn:hover {
+            filter: brightness(1.2);
+        }
+        
+        .window-btn.close { background: #ff5f57; }
+        .window-btn.minimize { background: #febc2e; }
+        .window-btn.maximize { background: #28c840; }
+        
+        .window-title {
+            flex: 1;
+            text-align: center;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .window-content {
+            padding: 20px;
+            color: #fff;
+            font-size: 14px;
+            overflow-y: auto;
+            height: calc(100% - 36px);
+        }
+        
+        .window-1 {
+            width: 450px;
+            height: 320px;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Zorin Appearance Preview */
+        .zorin-appearance {
+            display: flex;
+            height: 100%;
+        }
+        
+        .sidebar-preview {
+            width: 200px;
+            background: #252525;
+            padding: 16px;
+        }
+        
+        .sidebar-item {
+            padding: 10px 14px;
+            color: #ccc;
+            border-radius: 8px;
+            margin-bottom: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+        }
+        
+        .sidebar-item:hover {
+            background: rgba(255,255,255,0.05);
+        }
+        
+        .sidebar-item.active {
+            background: #7c4dff;
+            color: #fff;
+        }
+        
+        .content-preview {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .layout-options {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .layout-card {
+            background: #2a2a2a;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.2s;
+        }
+        
+        .layout-card:hover {
+            border-color: rgba(124,77,255,0.5);
+        }
+        
+        .layout-card.selected {
+            border-color: #7c4dff;
+        }
+        
+        .layout-icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .layout-name {
+            font-size: 14px;
+            color: #fff;
+        }
+        
+        /* Dock */
+        .dock {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            background: rgba(30,30,30,0.8);
+            padding: 6px 10px;
+            border-radius: 16px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .dock-item {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+        }
+        
+        .dock-item:hover {
+            transform: scale(1.2) translateY(-8px);
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .dock-item.running {
+            position: relative;
+        }
+        
+        .dock-item.running::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 5px;
+            background: #7c4dff;
+            border-radius: 50%;
+        }
+        
+        /* Dock Divider */
+        .dock-divider {
+            width: 1px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            margin: 2px 4px;
+        }
+        
+        /* Desktop Switcher */
+        .layout-selector {
+            position: absolute;
+            top: 40px;
+            right: 20px;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .layout-btn {
+            background: rgba(30,30,30,0.9);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            backdrop-filter: blur(10px);
+            transition: all 0.2s;
+        }
+        
+        .layout-btn:hover {
+            background: rgba(124,77,255,0.8);
+            border-color: #7c4dff;
+        }
+        
+        .layout-btn.active {
+            background: #7c4dff;
+            border-color: #7c4dff;
+        }
+        
+        /* Status Bar (for Windows/Linux layout) */
+        .status-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 28px;
+            background: rgba(30, 30, 30, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 12px;
+            -webkit-app-region: drag;
+            border-bottom: 1px solid #3a3a3a;
+        }
+        
+        .status-bar-left, .status-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            -webkit-app-region: no-drag;
+        }
+        
+        .status-bar-item {
+            color: #fff;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        
+        .status-bar-item:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        /* Taskbar (Windows style) */
+        .taskbar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 48px;
+            background: rgba(30, 30, 30, 0.95);
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+            gap: 4px;
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .start-btn {
+            width: 44px;
+            height: 40px;
+            background: linear-gradient(135deg, #7c4dff, #651fff);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            transition: transform 0.2s;
+        }
+        
+        .start-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .taskbar-apps {
+            display: flex;
+            gap: 4px;
+            margin-left: 12px;
+        }
+        
+        .taskbar-app {
+            width: 44px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .taskbar-app:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .taskbar-app.active {
+            background: rgba(124,77,255,0.3);
+        }
+        
+        .taskbar-app.active::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 3px;
+            background: #7c4dff;
+            border-radius: 2px;
+        }
+        
+        .taskbar-spacer {
+            flex: 1;
+        }
+        
+        .taskbar-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-right: 8px;
+        }
+        
+        .system-tray {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: #7c4dff;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="desktop-container">
+        <!-- macOS Layout Preview -->
+        <div class="desktop">
+            <div class="top-bar">
+                <div class="top-bar-left">
+                    <div class="menu-items">
+                        <span class="menu-item">Finder</span>
+                        <span class="menu-item">File</span>
+                        <span class="menu-item">Edit</span>
+                        <span class="menu-item">View</span>
+                        <span class="menu-item">Go</span>
+                        <span class="menu-item">Window</span>
+                        <span class="menu-item">Help</span>
+                    </div>
+                </div>
+                <div class="top-bar-center">MyZorinOS Desktop</div>
+                <div class="top-bar-right">
+                    <span class="status-icon">📶</span>
+                    <span class="status-icon">🔋</span>
+                    <span class="clock" id="clock">12:00 PM</span>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <!-- Layout Switcher -->
+                <div class="layout-selector">
+                    <button class="layout-btn active" onclick="switchLayout('macos')">macOS</button>
+                    <button class="layout-btn" onclick="switchLayout('windows')">Windows</button>
+                    <button class="layout-btn" onclick="switchLayout('linux')">Linux</button>
+                </div>
+                
+                <!-- Desktop Icons -->
+                <div class="desktop-icons">
+                    <div class="desktop-icon">
+                        <div class="icon-image">📁</div>
+                        <div class="icon-label">Home</div>
+                    </div>
+                    <div class="desktop-icon">
+                        <div class="icon-image">⚙️</div>
+                        <div class="icon-label">Settings</div>
+                    </div>
+                    <div class="desktop-icon">
+                        <div class="icon-image">🖥️</div>
+                        <div class="icon-label">Computer</div>
+                    </div>
+                    <div class="desktop-icon">
+                        <div class="icon-image">🗑️</div>
+                        <div class="icon-label">Trash</div>
+                    </div>
+                </div>
+                
+                <!-- Zorin Appearance Window -->
+                <div class="window window-1">
+                    <div class="window-header">
+                        <div class="window-controls">
+                            <div class="window-btn close"></div>
+                            <div class="window-btn minimize"></div>
+                            <div class="window-btn maximize"></div>
+                        </div>
+                        <div class="window-title">Zorin Appearance</div>
+                    </div>
+                    <div class="window-content">
+                        <div class="zorin-appearance">
+                            <div class="sidebar-preview">
+                                <div class="sidebar-item active">🎨 Layout</div>
+                                <div class="sidebar-item">👁️ Look</div>
+                                <div class="sidebar-item">🖼️ Background</div>
+                                <div class="sidebar-item">🔤 Fonts</div>
+                                <div class="sidebar-item">📱 About</div>
+                            </div>
+                            <div class="content-preview">
+                                <div class="section-title">Desktop Layout</div>
+                                <p style="color: #888; margin-bottom: 16px;">Change the layout of your desktop to make it feel familiar</p>
+                                <div class="layout-options">
+                                    <div class="layout-card">
+                                        <div class="layout-icon">🪟</div>
+                                        <div class="layout-name">Windows</div>
+                                    </div>
+                                    <div class="layout-card selected">
+                                        <div class="layout-icon">🍎</div>
+                                        <div class="layout-name">macOS</div>
+                                    </div>
+                                    <div class="layout-card">
+                                        <div class="layout-icon">🐧</div>
+                                        <div class="layout-name">Linux</div>
+                                    </div>
+                                </div>
+                                <p style="color: #7c4dff; font-size: 13px;">Current: macOS Layout</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dock -->
+                <div class="dock">
+                    <div class="dock-item running">📁</div>
+                    <div class="dock-item">🚀</div>
+                    <div class="dock-item">🌐</div>
+                    <div class="dock-item running">⚙️</div>
+                    <div class="dock-item">📧</div>
+                    <div class="dock-item">📅</div>
+                    <div class="dock-item">📝</div>
+                    <div class="dock-divider"></div>
+                    <div class="dock-item">🗑️</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>MyZorinOS - Desktop Preview</p>
+            <p>Inspired by <a href="https://zorin.com/os/" target="_blank">Zorin OS</a></p>
+        </div>
+    </div>
+    
+    <script>
+        // Update clock
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const displayHours = hours % 12 || 12;
+            document.getElementById('clock').textContent = `${displayHours}:${minutes} ${ampm}`;
+        }
+        updateClock();
+        setInterval(updateClock, 1000);
+        
+        // Layout switcher
+        function switchLayout(layout) {
+            document.querySelectorAll('.layout-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

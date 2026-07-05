@@ -1,0 +1,68 @@
+# MyZorinOS Package Manifest
+# List of packages included in the distribution
+
+# Core System
+linux-base
+systemd
+dbus
+udev
+openssl
+ca-certificates
+
+# Desktop Environment
+xfce4
+xfce4-panel
+xfce4-session
+xfce4-settings
+xfce4-terminal
+xfwm4
+thunar
+mousepad
+xfce4-taskmanager
+xfce4-screenshooter
+xfce4-clipman-plugin
+
+# UI Components
+gtk-3-themes
+icon-themes
+fonts-ubuntu
+fonts-cantarell
+
+# Applications
+firefox
+libreoffice
+gimp
+vlc
+gnome-calculator
+gnome-calendar
+gnome-clocks
+
+# Utilities
+file-roller
+gnome-screenshot
+gnome-system-monitor
+gnome-disk-utility
+baobab
+eog
+
+# Development
+vim
+git
+build-essential
+python3
+python3-pip
+
+# Multimedia
+gstreamer1.0-plugins-base
+gstreamer1.0-plugins-good
+ffmpeg
+
+# Network
+network-manager
+network-manager-gnome
+firewalld
+
+# System Tools
+gnome-control-center
+gnome-tweaks
+policykit-1

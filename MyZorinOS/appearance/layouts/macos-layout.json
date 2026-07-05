@@ -1,0 +1,94 @@
+{
+  "id": "macos",
+  "name": "macOS Layout",
+  "description": "macOS-style desktop layout with menu bar at top and dock at bottom",
+  "icon": "🍎",
+  "panel": {
+    "position": "top",
+    "height": 25,
+    "autohide": false,
+    "show_handles": false,
+    "elements": [
+      {
+        "type": "apple-menu",
+        "icon": "apple-logo",
+        "tooltip": "Apple"
+      },
+      {
+        "type": "spacer",
+        "flex": true
+      },
+      {
+        "type": "menu-bar",
+        "items": ["file", "edit", "view", "go", "window", "help"]
+      },
+      {
+        "type": "spacer",
+        "flex": true
+      },
+      {
+        "type": "system-tray",
+        "items": ["network", "volume", "battery", "clock"]
+      }
+    ]
+  },
+  "dock": {
+    "enabled": true,
+    "position": "bottom",
+    "magnification": true,
+    "autohide": true,
+    "minimize-to-app": true,
+    "items": [
+      {
+        "id": "finder",
+        "icon": "org.gnome.Nautilus",
+        "type": "folder"
+      },
+      {
+        "id": "launchpad",
+        "icon": "launchpad",
+        "type": "app"
+      },
+      {
+        "type": "separator"
+      },
+      {
+        "id": "safari",
+        "icon": "org.gnome.Web",
+        "type": "app"
+      },
+      {
+        "id": "mail",
+        "icon": "org.gnome.Mail",
+        "type": "app"
+      },
+      {
+        "type": "separator"
+      },
+      {
+        "id": "settings",
+        "icon": "org.gnome.Settings",
+        "type": "app"
+      }
+    ],
+    "size": {
+      "icon_size": 48,
+      "magnified_size": 64
+    }
+  },
+  "menu": {
+    "type": "top-menu-bar",
+    "position": "top"
+  },
+  "window-buttons": {
+    "minimize": true,
+    "maximize": false,
+    "close": true,
+    "position": "left"
+  },
+  "folder-view": "none",
+  "spotlight": {
+    "enabled": true,
+    "hotkey": "Super+Space"
+  }
+}

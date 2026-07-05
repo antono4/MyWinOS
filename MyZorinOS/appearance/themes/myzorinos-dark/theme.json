@@ -1,0 +1,33 @@
+{
+  "id": "myzorinos-dark",
+  "name": "MyZorinOS Dark",
+  "description": "A sleek dark theme inspired by Zorin OS with purple accents",
+  "category": "dark",
+  "colors": {
+    "accent": "#7c4dff",
+    "accent-alt": "#651fff",
+    "background": "#1e1e1e",
+    "background-alt": "#252525",
+    "surface": "#2a2a2a",
+    "surface-hover": "#333333",
+    "surface-active": "#3a3a3a",
+    "text": "#ffffff",
+    "text-secondary": "#b3b3b3",
+    "border": "#3a3a3a",
+    "success": "#4caf50",
+    "warning": "#ff9800",
+    "error": "#f44336"
+  },
+  "window": {
+    "border-radius": 8,
+    "shadow": "0 8px 32px rgba(0,0,0,0.4)"
+  },
+  "button": {
+    "border-radius": 6,
+    "padding": "8px 16px"
+  },
+  "card": {
+    "border-radius": 12,
+    "shadow": "0 4px 16px rgba(0,0,0,0.2)"
+  }
+}

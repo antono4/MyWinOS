@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=MyZorinOS
+Comment=A modern desktop environment inspired by Zorin OS
+Exec=/opt/myzorinos/scripts/config/start-desktop.sh
+Icon=myzorinos
+Type=Application
+DesktopNames=XFCE;MyZorinOS;
+Keywords=Desktop;Environment;DesktopEnvironment;
+X-GNOME-WMName=MyZorinOS
+X-GNOME-Autostart-Phase=DisplayServer

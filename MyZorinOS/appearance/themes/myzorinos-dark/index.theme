@@ -1,0 +1,18 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=MyZorinOS Dark
+Name[en]=MyZorinOS Dark
+Comment=A sleek dark theme inspired by Zorin OS
+Author=MyZorinOS Team
+Version=1.0
+License=GPL-3.0
+
+[X-GNOME-Metatheme]
+AccentColor=#7c4dff
+ThemeName=MyZorinOS Dark
+MetacityTheme=MyZorinOS Dark
+IconTheme=MyZorinOS Icons
+CursorTheme=Adwaita
+CursorSize=24
+GtkTheme=MyZorinOS Dark
+ColorScheme=prefer-dark

@@ -1,0 +1,66 @@
+{
+  "id": "windows",
+  "name": "Windows Layout",
+  "description": "Classic Windows-style desktop layout with taskbar at bottom",
+  "icon": "🪟",
+  "panel": {
+    "position": "bottom",
+    "height": 40,
+    "autohide": false,
+    "show_handles": false,
+    "elements": [
+      {
+        "type": "start-button",
+        "icon": "windows-logo",
+        "tooltip": "Start"
+      },
+      {
+        "type": "launcher",
+        "items": ["file-manager", "terminal", "web-browser"]
+      },
+      {
+        "type": "taskbar",
+        "show_icons": true,
+        "grouping": "none"
+      },
+      {
+        "type": "spacer"
+      },
+      {
+        "type": "system-tray",
+        "items": ["network", "volume", "battery", "clock"]
+      }
+    ]
+  },
+  "dock": {
+    "enabled": false
+  },
+  "menu": {
+    "type": "start-menu",
+    "position": "bottom-left",
+    "width": 400,
+    "items": [
+      {
+        "category": "pinned",
+        "items": ["file-manager", "terminal", "web-browser", "settings", "zorin-appearance"]
+      },
+      {
+        "category": "recent",
+        "show": true,
+        "max_items": 5
+      },
+      {
+        "category": "all-apps",
+        "show": true,
+        "label": "All apps"
+      }
+    ]
+  },
+  "window-buttons": {
+    "minimize": true,
+    "maximize": true,
+    "close": true,
+    "position": "right"
+  },
+  "folder-view": "desktop-icons"
+}

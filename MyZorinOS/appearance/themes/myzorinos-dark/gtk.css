@@ -1,0 +1,336 @@
+/* MyZorinOS Dark Theme - GTK3 */
+@import url("resource:///org/gnome/theme/adwaita.css");
+
+/* Color variables */
+@define-color accent_color #7c4dff;
+@define-color accent_bg_color #7c4dff;
+@define-color accent_fg_color #ffffff;
+
+@define-color window_bg_color #1e1e1e;
+@define-color window_fg_color #ffffff;
+
+@define-color view_bg_color #2a2a2a;
+@define-color view_fg_color #ffffff;
+
+@define-color headerbar_bg_color #252525;
+@define-color headerbar_fg_color #ffffff;
+@define-color headerbar_border_color #3a3a3a;
+
+@define-color sidebar_bg_color #252525;
+@define-color card_bg_color #2a2a2a;
+@define-color dialog_bg_color #1e1e1e;
+
+@define-color button_bg_color #333333;
+@define-color button_fg_color #ffffff;
+
+@define-color entry_bg_color #2a2a2a;
+@define-color entry_fg_color #ffffff;
+@define-color entry_border_color #3a3a3a;
+
+@define-color osd_bg_color rgba(30, 30, 30, 0.9);
+@define-color osd_fg_color #ffffff;
+
+@define-color selection_bg_color rgba(124, 77, 255, 0.3);
+@define-color selection_fg_color #ffffff;
+
+@define-color border_color #3a3a3a;
+@define-color separator_color #3a3a3a;
+
+@define-color text_color #ffffff;
+@define-color text_color_secondary #b3b3b3;
+@define-color text_color_disabled rgba(255, 255, 255, 0.5);
+
+@define-color success_color #4caf50;
+@define-color warning_color #ff9800;
+@define-color error_color #f44336;
+
+/* Dark theme overrides */
+window {
+    background: @window_bg_color;
+    color: @text_color;
+}
+
+window.background {
+    background: @window_bg_color;
+}
+
+headerbar {
+    background: @headerbar_bg_color;
+    color: @headerbar_fg_color;
+    border-bottom: 1px solid @headerbar_border_color;
+}
+
+.titlebar {
+    background: @headerbar_bg_color;
+    color: @headerbar_fg_color;
+}
+
+.titlebar button,
+headerbar button {
+    background: transparent;
+    color: @text_color;
+}
+
+.titlebar button:hover,
+headerbar button:hover {
+    background: @button_bg_color;
+}
+
+.titlebar button:active,
+headerbar button:active {
+    background: @surface-active;
+}
+
+.titlebar button.suggested-action,
+headerbar button.suggested-action {
+    background: @accent_color;
+    color: @accent_fg_color;
+}
+
+/* Window decorations */
+window decoration {
+    background: @window_bg_color;
+    border-radius: 8px;
+}
+
+window.csd {
+    background: @window_bg_color;
+    border-radius: 8px;
+}
+
+/* Buttons */
+button {
+    background: @button_bg_color;
+    color: @button_fg_color;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+}
+
+button:hover {
+    background: @surface-hover;
+}
+
+button:active {
+    background: @surface-active;
+}
+
+button.destructive-action {
+    background: @error_color;
+    color: white;
+}
+
+button.suggested-action {
+    background: @accent_color;
+    color: @accent_fg_color;
+}
+
+/* Cards */
+.card {
+    background: @card_bg_color;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    padding: 16px;
+}
+
+/* Entries */
+entry {
+    background: @entry_bg_color;
+    color: @entry_fg_color;
+    border: 1px solid @entry_border_color;
+    border-radius: 6px;
+    padding: 8px 12px;
+}
+
+entry:focus {
+    border-color: @accent_color;
+}
+
+/* Sidebar */
+.sidebar {
+    background: @sidebar_bg_color;
+    color: @text_color;
+}
+
+.sidebar row {
+    background: transparent;
+    color: @text_color;
+}
+
+.sidebar row:hover {
+    background: @surface-hover;
+}
+
+.sidebar row:selected {
+    background: @accent_color;
+    color: @accent_fg_color;
+}
+
+/* Lists */
+list {
+    background: @view_bg_color;
+    color: @view_fg_color;
+}
+
+row {
+    background: transparent;
+    color: @text_color;
+}
+
+row:hover {
+    background: @surface-hover;
+}
+
+row:selected {
+    background: @accent_color;
+    color: @accent_fg_color;
+}
+
+/* Switches */
+switch {
+    background: @surface-hover;
+    color: @text_color;
+}
+
+switch:checked {
+    background: @accent_color;
+    color: @accent_fg_color;
+}
+
+/* Scales */
+scale {
+    background: @surface-hover;
+    color: @text_color;
+}
+
+scale highlight {
+    background: @accent_color;
+}
+
+scale slider {
+    background: @accent_fg_color;
+}
+
+/* Progress bars */
+progressbar {
+    background: @surface-hover;
+    color: @accent_color;
+}
+
+progressbar progress {
+    background: @accent_color;
+}
+
+/* Scrollbars */
+scrollbar {
+    background: transparent;
+}
+
+scrollbar slider {
+    background: @surface-hover;
+    border-radius: 8px;
+}
+
+scrollbar slider:hover {
+    background: @surface-active;
+}
+
+/* Tooltips */
+tooltip {
+    background: @headerbar_bg_color;
+    color: @text_color;
+    border-radius: 6px;
+    padding: 6px 10px;
+}
+
+/* Popovers */
+popover {
+    background: @card_bg_color;
+    color: @text_color;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+popover:hover {
+    background: @surface-hover;
+}
+
+/* Menu */
+menu {
+    background: @card_bg_color;
+    color: @text_color;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+menuitem {
+    background: transparent;
+    color: @text_color;
+}
+
+menuitem:hover {
+    background: @surface-hover;
+}
+
+/* Dialog */
+dialog {
+    background: @dialog_bg_color;
+    color: @text_color;
+}
+
+/* Action bar */
+actionbar {
+    background: @headerbar_bg_color;
+    color: @text_color;
+    border-top: 1px solid @border_color;
+}
+
+/* Tab bar */
+tabbar {
+    background: @headerbar_bg_color;
+}
+
+tab {
+    background: transparent;
+    color: @text_color_secondary;
+}
+
+tab:hover {
+    background: @surface-hover;
+    color: @text_color;
+}
+
+tab:selected {
+    background: @accent_color;
+    color: @accent_fg_color;
+}
+
+/* Spinner */
+spinner {
+    color: @accent_color;
+}
+
+/* Checkboxes and radios */
+checkbutton {
+    color: @text_color;
+}
+
+radiobutton {
+    color: @text_color;
+}
+
+check {
+    background: @surface-hover;
+    color: @text_color;
+}
+
+radio {
+    background: @surface-hover;
+    color: @text_color;
+}
+
+check:checked,
+radio:checked {
+    background: @accent_color;
+    color: @accent_fg_color;
+}

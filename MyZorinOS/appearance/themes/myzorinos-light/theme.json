@@ -1,0 +1,33 @@
+{
+  "id": "myzorinos-light",
+  "name": "MyZorinOS Light",
+  "description": "A clean light theme inspired by Zorin OS",
+  "category": "light",
+  "colors": {
+    "accent": "#7c4dff",
+    "accent-alt": "#651fff",
+    "background": "#f5f5f5",
+    "background-alt": "#ffffff",
+    "surface": "#ffffff",
+    "surface-hover": "#f0f0f0",
+    "surface-active": "#e8e8e8",
+    "text": "#1e1e1e",
+    "text-secondary": "#666666",
+    "border": "#e0e0e0",
+    "success": "#4caf50",
+    "warning": "#ff9800",
+    "error": "#f44336"
+  },
+  "window": {
+    "border-radius": 8,
+    "shadow": "0 4px 24px rgba(0,0,0,0.1)"
+  },
+  "button": {
+    "border-radius": 6,
+    "padding": "8px 16px"
+  },
+  "card": {
+    "border-radius": 12,
+    "shadow": "0 2px 8px rgba(0,0,0,0.08)"
+  }
+}

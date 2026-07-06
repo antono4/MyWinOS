@@ -32,14 +32,14 @@ log_info "Starting Bootloader Installation..."
 # =============================================================================
 # Build Linux Kernel
 # =============================================================================
-log_step "Building Linux-6.4 Kernel..."
+log_step "Building Linux-6.12 Kernel..."
 cd $LFS/sources
-tar -xf linux-6.4.tar.xz
-cd linux-6.4
+tar -xf linux-6.12.tar.xz
+cd linux-6.12
 
 # Copy kernel config if exists
-if [ -f /workspace/project/custom-linux-distro/config/kernel-config ]; then
-    cp /workspace/project/custom-linux-distro/config/kernel-config .config
+if [ -f "$LFS/../config/kernel-config" ]; then
+    cp "$LFS/../config/kernel-config" .config
 else
     # Create minimal kernel config
     make mrproper
@@ -51,26 +51,26 @@ make -j$(nproc)
 make INSTALL_MOD_STRIP=1 modules_install
 
 # Install kernel
-cp -v arch/x86/boot/bzImage /boot/vmlinuz-6.4-lfs-12.0
-cp -v System.map /boot/System.map-6.4
-cp -v .config /boot/config-6.4
+cp -v arch/x86/boot/bzImage /boot/vmlinuz-6.12-lfs-12.3
+cp -v System.map /boot/System.map-6.12
+cp -v .config /boot/config-6.12
 
 # Create kernel symlinks
 cd /boot
-ln -sfv vmlinuz-6.4-lfs-12.0 vmlinuz
-ln -sfv System.map-6.4 System.map
-ln -sfv config-6.4 config
+ln -sfv vmlinuz-6.12-lfs-12.3 vmlinuz
+ln -sfv System.map-6.12 System.map
+ln -sfv config-6.12 config
 
-cd $LFS/sources && rm -rf linux-6.4
-log_info "Linux-6.4 Kernel installed"
+cd $LFS/sources && rm -rf linux-6.12
+log_info "Linux-6.12 Kernel installed"
 
 # =============================================================================
 # Build GRUB2 Bootloader
 # =============================================================================
 log_step "Building GRUB2..."
 cd $LFS/sources
-tar -xf grub-2.06.tar.xz
-cd grub-2.06
+tar -xf grub-2.12.tar.xz
+cd grub-2.12
 
 mkdir -pv build && cd build
 ../configure --prefix=/usr \
@@ -92,7 +92,7 @@ for PLATFORM in $GRUB_PLATFORMS; do
                      --modules="normal boot linux search search_fs_uuid part_gpt part_msdos biosdisk"
 done
 
-cd $LFS/sources && rm -rf grub-2.06
+cd $LFS/sources && rm -rf grub-2.12
 log_info "GRUB2 installed"
 
 # =============================================================================
@@ -118,29 +118,29 @@ set menu_color_highlight=black/light-gray
 # terminal_output console
 
 # Menu entry
-menuentry "My Custom Linux 12.0" {
+menuentry "My Custom Linux 12.3" {
     # Set root partition
     set root=(hd0,msdos2)
     
     # Load Linux kernel
-    linux /boot/vmlinuz-6.4-lfs-12.0 root=/dev/sda2 ro quiet splash
+    linux /boot/vmlinuz-6.12-lfs-12.3 root=/dev/sda2 ro quiet splash
     
     # Initrd (if needed)
     # initrd /boot/initrd.img
 }
 
 # Recovery mode
-menuentry "My Custom Linux 12.0 (Recovery Mode)" {
+menuentry "My Custom Linux 12.3 (Recovery Mode)" {
     set root=(hd0,msdos2)
-    linux /boot/vmlinuz-6.4-lfs-12.0 root=/dev/sda2 ro single
+    linux /boot/vmlinuz-6.12-lfs-12.3 root=/dev/sda2 ro single
 }
 
 # Advanced options submenu
 menuentry 'Advanced options for My Custom Linux' --class gnu-linux --class gnu --class os --id 'advanced' {
-    submenu 'My Custom Linux 12.0 - Advanced Options' {
-        menuentry 'My Custom Linux 12.0 - Kernel 6.4' {
+    submenu 'My Custom Linux 12.3 - Advanced Options' {
+        menuentry 'My Custom Linux 12.3 - Kernel 6.12' {
             set root=(hd0,msdos2)
-            linux /boot/vmlinuz-6.4-lfs-12.0 root=/dev/sda2 ro
+            linux /boot/vmlinuz-6.12-lfs-12.3 root=/dev/sda2 ro
         }
     }
 }
@@ -236,8 +236,8 @@ chmod +x $LFS/etc/rc.d/init.d/functions
 log_step "Performing final cleanup..."
 
 # Save build log
-if [ -f /workspace/project/custom-linux-distro/build.log ]; then
-    mv /workspace/project/custom-linux-distro/build.log /workspace/project/custom-linux-distro/build-$(date +%Y%m%d).log
+if [ -f "$LFS/../build.log" ]; then
+    mv "$LFS/../build.log" "$LFS/../build-$(date +%Y%m%d).log"
 fi
 
 log_info "========================================"
@@ -247,7 +247,7 @@ log_info ""
 log_info "Your custom Linux distribution is now ready!"
 log_info ""
 log_info "Next steps:"
-log_info "1. Reboot and select 'My Custom Linux 12.0' from GRUB menu"
+log_info "1. Reboot and select 'My Custom Linux 12.3' from GRUB menu"
 log_info "2. Login as root"
 log_info "3. Change root password: passwd"
 log_info "4. Configure network"
@@ -257,11 +257,11 @@ log_info ""
 log_info "========================================"
 log_info "SYSTEM SUMMARY"
 log_info "========================================"
-log_info "Kernel:     Linux 6.4"
-log_info "Bootloader: GRUB 2.06"
-log_info "Shell:      Bash 5.2.15"
-log_info "Compiler:   GCC 13.2.0"
-log_info "C Library:  Glibc 2.38"
-log_info "Python:     3.11.4"
-log_info "Editor:     Vim 9.0"
+log_info "Kernel:     Linux 6.12"
+log_info "Bootloader: GRUB 2.12"
+log_info "Shell:      Bash 5.3"
+log_info "Compiler:   GCC 14.2.0"
+log_info "C Library:  Glibc 2.41"
+log_info "Python:     3.12.7"
+log_info "Editor:     Vim 9.1"
 log_info "========================================"

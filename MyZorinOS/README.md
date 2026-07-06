@@ -2,8 +2,6 @@
 
 **MyZorinOS** adalah distribusi Linux kustom yang terinspirasi dari Zorin OS, dirancang untuk memberikan pengalaman desktop yang familiar dan mudah digunakan bagi pengguna Windows dan macOS.
 
-![MyZorinOS Desktop](docs/screenshots/desktop-preview.png)
-
 ## ✨ Fitur Utama
 
 ### 🎨 Multi-Layout Desktop
@@ -123,9 +121,9 @@ Theme system menggunakan GTK3/4 dan Qt5/6
 
 MyZorinOS dibangun di atas:
 - **Ubuntu 24.04 LTS** - Base system
-- **XFCE 4.18** - Desktop environment
-- **GTK 4.10** - UI toolkit
-- **Linux 6.8** - Kernel
+- **XFCE 4.20** - Desktop environment
+- **GTK 4.14** - UI toolkit
+- **Linux 6.12** - Kernel
 
 ## 🤝 Kontribusi
 

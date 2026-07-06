@@ -5,7 +5,7 @@ Proyek ini berisi dua implementasi untuk membuat sistem operasi:
 ---
 
 ## 📁 Proyek 1: Bare-metal OS (OS dari Nol)
-**Lokasi:** `/workspace/project/baremetal-os`
+**Lokasi:** `./baremetal-os`
 
 OS sederhana yang dibuat dari awal tanpa menggunakan kernel Linux.
 
@@ -39,18 +39,18 @@ baremetal-os/
 ---
 
 ## 📁 Proyek 2: Custom Linux Distribution
-**Lokasi:** `/workspace/project/custom-linux-distro`
+**Lokasi:** `./custom-linux-distro`
 
 Distro Linux kustom menggunakan metodologi Linux From Scratch (LFS).
 
 ### Fitur:
-- ✅ GCC 13.2.0 Compiler
-- ✅ Glibc 2.38 C Library
-- ✅ Linux 6.4 Kernel
-- ✅ Bash 5.2 Shell
-- ✅ Python 3.11
-- ✅ Vim 9.0 Editor
-- ✅ GRUB 2.06 Bootloader
+- ✅ GCC 14.2.0 Compiler
+- ✅ Glibc 2.41 C Library
+- ✅ Linux 6.12 Kernel
+- ✅ Bash 5.3 Shell
+- ✅ Python 3.12.7
+- ✅ Vim 9.1 Editor
+- ✅ GRUB 2.12 Bootloader
 - ✅ Systemd Init System
 
 ### Cara Build:

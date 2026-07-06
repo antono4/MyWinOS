@@ -101,52 +101,52 @@ custom-linux-distro/
 ### Temporary System Tools
 | Package | Version | Purpose |
 |--------|---------|---------|
-| Binutils | 2.41 | Binary utilities (ld, as, objcopy) |
-| GCC | 13.2.0 | GNU Compiler Collection |
-| Glibc | 2.38 | GNU C Library |
+| Binutils | 2.44 | Binary utilities (ld, as, objcopy) |
+| GCC | 14.2.0 | GNU Compiler Collection |
+| Glibc | 2.41 | GNU C Library |
 | GMP | 6.3.0 | GNU Multiple Precision |
-| MPFR | 4.2.0 | Multiple Precision Floating-Point |
+| MPFR | 4.2.1 | Multiple Precision Floating-Point |
 | MPC | 1.3.1 | Multiple Precision Complex |
-| Linux | 6.4 | API Headers |
+| Linux | 6.12 | API Headers |
 | Tcl | 8.6.13 | Tool Command Language |
 | Expect | 5.45.4 | Expect automation |
 | DejaGNU | 1.6.3 | Testing framework |
 | M4 | 1.4.19 | Macro processor |
-| Ncurses | 6.4 | Terminal handling |
-| Bash | 5.2.15 | Bourne Again Shell |
-| Coreutils | 9.3 | Core utilities |
-| Diffutils | 3.10 | File comparison |
+| Ncurses | 6.5 | Terminal handling |
+| Bash | 5.3 | Bourne Again Shell |
+| Coreutils | 9.5 | Core utilities |
+| Diffutils | 3.11 | File comparison |
 | File | 5.45 | File type detection |
-| Findutils | 4.9.0 | Finding utilities |
-| Gawk | 5.2.2 | AWK interpreter |
+| Findutils | 4.10.0 | Finding utilities |
+| Gawk | 5.3.1 | AWK interpreter |
 | Gettext | 0.22 | Internationalization |
 | Grep | 3.11 | Pattern matching |
-| Gzip | 1.12 | Compression |
+| Gzip | 1.13 | Compression |
 | Make | 4.4.1 | Build tool |
 | Patch | 2.7.6 | Apply patches |
 | Sed | 4.9 | Stream editor |
-| Tar | 1.34 | Archive utility |
-| Texinfo | 7.0.3 | Documentation |
-| Xz | 5.4.4 | Compression |
+| Tar | 1.35 | Archive utility |
+| Texinfo | 7.2 | Documentation |
+| Xz | 5.6.3 | Compression |
 
 ### Final System Packages
 | Package | Version | Purpose |
 |--------|---------|---------|
 | Bzip2 | 1.0.8 | Compression |
 | Flex | 2.6.4 | Lexical analyzer |
-| Kmod | 30 | Kernel module management |
+| Kmod | 33 | Kernel module management |
 | Libcap | 2.69 | POSIX capabilities |
-| Openssl | 3.1.2 | SSL/TLS library |
-| Perl | 5.36.1 | Perl interpreter |
-| Python | 3.11.4 | Python interpreter |
+| Openssl | 3.3.0 | SSL/TLS library |
+| Perl | 5.40.0 | Perl interpreter |
+| Python | 3.12.7 | Python interpreter |
 | Shadow | 4.13 | Password management |
-| Systemd | 253 | System manager |
-| Man-DB | 2.11.3 | Manual pages |
-| Procps-ng | 4.0.3 | Process utilities |
-| Util-linux | 2.38.1 | System utilities |
-| Vim | 9.0.1670 | Text editor |
-| Linux | 6.4 | Kernel |
-| GRUB | 2.06 | Bootloader |
+| Systemd | 256 | System manager |
+| Man-DB | 2.13.0 | Manual pages |
+| Procps-ng | 4.0.4 | Process utilities |
+| Util-linux | 2.40.4 | System utilities |
+| Vim | 9.1.0937 | Text editor |
+| Linux | 6.12 | Kernel |
+| GRUB | 2.12 | Bootloader |
 
 ## Cara Build
 

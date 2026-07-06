@@ -7,39 +7,38 @@ Sistem operasi ini disebut **"NanoOS"** - OS minimal untuk pembelajaran.
 ## Arsitektur
 
 ```
-в”Ңв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”җ
-в”Ӯ           NanoOS Architecture            в”Ӯ
-в”ңв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Ө
-в”Ӯ                                         в”Ӯ
-в”Ӯ   в”Ңв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”җ   в”Ӯ
-в”Ӯ   в”Ӯ      User Space                 в”Ӯ   в”Ӯ
-в”Ӯ   в”Ӯ  в”Ңв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”җ в”Ңв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”җ  в”Ӯ   в”Ӯ
-в”Ӯ   в”Ӯ  в”Ӯ   Shell   в”Ӯ в”Ӯ   Programs  в”Ӯ  в”Ӯ   в”Ӯ
-в”Ӯ   в”Ӯ  в””в”Җв”Җв”Җв”Җв”Җв”¬в”Җв”Җв”Җв”Җв”Җв”ҳ в””в”Җв”Җв”Җв”Җв”Җв”Җв”¬в”Җв”Җв”Җв”Җв”Җв”Җв”ҳ  в”Ӯ   в”Ӯ
-в”Ӯ   в”Ӯ        в””в”Җв”Җв”Җв”Җв”Җв”Җв”¬в”Җв”Җв”Җв”Җв”Җв”Җв”Җв”ҳ         в”Ӯ   в”Ӯ
-в”Ӯ   в”Ӯ         в”Ңв”Җв”Җв”Җв”Җв–јв”Җв”Җв”Җв”Җв”җ             в”Ӯ   в”Ӯ
-в”Ӯ   в”Ӯ         в”Ӯ   libc  в”Ӯ             в”Ӯ   в”Ӯ
-в”Ӯ   в”Ӯ         в””в”Җв”Җв”Җв”Җв”¬в”Җв”Җв”Җв”Җв”ҳ             в”Ӯ   в”Ӯ
-в”Ӯ   в””в”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”јв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”ҳ   в”Ӯ
-в”Ӯ                  в”Ӯ                       в”Ӯ
-в”Ӯ   в”Ңв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв–јв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”җ   в”Ӯ
-в”Ӯ   в”Ӯ      Kernel Space                в”Ӯ   в”Ӯ
-в”Ӯ   в”Ӯ  в”Ңв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”җ в”Ңв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”җ  в”Ӯ   в”Ӯ
-в”Ӯ   в”Ӯ  в”Ӯ   VFS    в”Ӯ в”Ӯ  Process Mgr  в”Ӯ  в”Ӯ   в”Ӯ
-в”Ӯ   в”Ӯ  в”ңв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Ө в”ңв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Ө  в”Ӯ   в”Ӯ
-в”Ӯ   в”Ӯ  в”Ӯ   MMU    в”Ӯ в”Ӯ   Device Drv  в”Ӯ  в”Ӯ   в”Ӯ
-в”Ӯ   в”Ӯ  в”ңв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Ө в”ңв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Ө  в”Ӯ   в”Ӯ
-в”Ӯ   в”Ӯ  в”Ӯ   IPC    в”Ӯ в”Ӯ   File System  в”Ӯ  в”Ӯ   в”Ӯ
-в”Ӯ   в”Ӯ  в””в”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”ҳ в””в”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”ҳ  в”Ӯ   в”Ӯ
-в”Ӯ   в””в”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”ҳ   в”Ӯ
-в”Ӯ                  в”Ӯ                       в”Ӯ
-в”Ӯ   в”Ңв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв–јв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”җ   в”Ӯ
-в”Ӯ   в”Ӯ      Hardware (x86/ARM)          в”Ӯ   в”Ӯ
-в”Ӯ   в””в”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”ҳ   в”Ӯ
-в””в”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”Җв”ҳ
++------------------------------------------------------------------+
+|                    NanoOS Architecture                             |
++------------------------------------------------------------------+
+|                                                                    |
+|  +------------------------------------------------------------+   |
+|  |                      User Space                              |   |
+|  |  +------------------+      +------------------+             |   |
+|  |  |      Shell       |      |    Programs      |             |   |
+|  |  +------------------+      +------------------+             |   |
+|  |                      |                       |             |   |
+|  |                +-----+-----+                           |   |
+|  |                |    libc    |                           |   |
+|  |                +-------------+                           |   |
+|  +------------------------------------------------------------+   |
+|                              |                                  |
+|  +------------------------------------------------------------+   |
+|  |                    Kernel Space                             |   |
+|  |  +-------------+     +------------------+                  |   |
+|  |  |    VFS      |     |   Process Mgr    |                  |   |
+|  |  +------+------+     +--------+---------+                  |   |
+|  |  | MMU  |  IPC |     | Device Drv |  FS   |                  |   |
+|  |  +------+------+     +------------+-------+                  |   |
+|  +------------------------------------------------------------+   |
+|                              |                                  |
+|  +------------------------------------------------------------+   |
+|  |               Hardware (x86/ARM)                            |   |
+|  +------------------------------------------------------------+   |
++------------------------------------------------------------------+
 ```
 
 ## Fitur
+
 - ✅ Bootloader sederhana (GRUB multiboot)
 - ✅ Kernel 32-bit sederhana
 - ✅ Memory Management (paging)
@@ -53,34 +52,33 @@ Sistem operasi ini disebut **"NanoOS"** - OS minimal untuk pembelajaran.
 
 ```
 baremetal-os/
-в”ңв”Җв”Җ bootloader/
-в”Ӯ   в”ңв”Җв”Җ stage1.S          # Stage 1 bootloader
-в”Ӯ   в”ңв”Җв”Җ stage2.S          # Stage 2 bootloader
-в”Ӯ   в””в”Җв”Җ linker.ld         # Linker script
-в”ңв”Җв”Җ kernel/
-в”Ӯ   в”ңв”Җв”Җ main.c            # Kernel entry point
-в”Ӯ   в”ңв”Җв”Җ idt.c             # Interrupt Descriptor Table
-в”Ӯ   в”ңв”Җв”Җ gdt.c             # Global Descriptor Table
-в”Ӯ   в”ңв”Җв”Җ memory.c          # Memory management
-в”Ӯ   в”ңв”Җв”Җ paging.c          # Paging implementation
-в”Ӯ   в”ңв”Җв”Җ vfs.c             # Virtual File System
-в”Ӯ   в”ңв”Җв”Җ syscall.c         # System calls
-в”Ӯ   в””в”Җв”Җ devices/
-в”Ӯ       в”ңв”Җв”Җ keyboard.c    # Keyboard driver
-в”Ӯ       в””в”Җв”Җ timer.c       # Timer driver
-в”ңв”Җв”Җ libc/
-в”Ӯ   в”ңв”Җв”Җ stdio.c           # Standard I/O
-в”Ӯ   в”ңв”Җв”Җ string.c          # String operations
-в”Ӯ   в””в”Җв”Җ stdlib.c          # Standard library
-в”ңв”Җв”Җ shell/
-в”Ӯ   в””в”Җв”Җ shell.c           # Interactive shell
-в”ңв”Җв”Җ programs/
-в”Ӯ   в”ңв”Җв”Җ hello.c           # Sample program
-в”Ӯ   в”ңв”Җв”Җ echo.c            # Echo program
-в”Ӯ   в””в”Җв”Җ calculator.c      # Simple calculator
-в”ңв”Җв”Җ iso/
-в”Ӯ   в””в”Җв”Җ Makefile          # Build ISO image
-в””в”Җв”Җ README.md
+├── bootloader/
+│   ├── stage1.S          # Stage 1 bootloader
+│   ├── stage2.S          # Stage 2 bootloader
+│   └── linker.ld         # Linker script
+├── kernel/
+│   ├── main.c            # Kernel entry point
+│   ├── idt.c             # Interrupt Descriptor Table
+│   ├── gdt.c             # Global Descriptor Table
+│   ├── memory.c          # Memory management
+│   ├── paging.c          # Paging implementation
+│   ├── vfs.c             # Virtual File System
+│   ├── syscall.c         # System calls
+│   └── devices/
+│       ├── keyboard.c    # Keyboard driver
+│       └── timer.c       # Timer driver
+├── libc/
+│   ├── stdio.c           # Standard I/O
+│   ├── string.c          # String operations
+│   └── stdlib.c          # Standard library
+├── shell/
+│   └── shell.c           # Interactive shell
+├── programs/
+│   ├── hello.c           # Sample program
+│   ├── echo.c            # Echo program
+│   └── calculator.c      # Simple calculator
+└── iso/
+    └── Makefile          # Build ISO image
 ```
 
 ## Cara Build & Run
@@ -89,7 +87,7 @@ baremetal-os/
 ```bash
 # Install toolchain
 sudo apt update
-sudo apt install build-essential binutils gcc g++ make grub-common xorriso qemu-system-x86
+sudo apt install build-essential binutils gcc g++ make nasm grub-common xorriso qemu-system-x86
 ```
 
 ### Build
@@ -108,10 +106,8 @@ make run
 make iso
 ```
 
-## Screenshots
-Boot screen dan shell interaktif akan muncul setelah successful build.
-
 ## Pengembangan Lebih Lanjut
+
 - Tambahkan driver untuk hardware lain (VGA, floppy, dll)
 - Implementasi multitasking
 - Tambahkan networking stack
@@ -119,4 +115,5 @@ Boot screen dan shell interaktif akan muncul setelah successful build.
 - Tambahkan filesystem lain (ext2, NTFS)
 
 ## Lisensi
+
 MIT License

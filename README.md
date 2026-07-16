@@ -1,5 +1,8 @@
 # 🖥️ OS Project - Custom Linux Distribution & Bare-metal OS
 
+> **Created by Antono**
+
+
 Proyek ini berisi dua implementasi untuk membuat sistem operasi:
 
 ---

@@ -1,2 +1,26 @@
-Last updated: 2026-09-15 07:47:18 WIB
-Last updated: 2026-09-15 07:51:55 WIB
+# MyWinOS
+
+
+
+## 📋 Overview
+
+This repository contains **65 files** and is built with the following technologies:
+
+Not detected
+
+## 🚀 Quick Start
+
+## ✨ Features
+
+- 📝 Auto-generated documentation
+
+## 🛠️ Technologies
+
+Not detected
+
+## 📄 License
+
+MIT License
+
+---
+*Last updated: 2026-09-15 07:55:46 WIB*
